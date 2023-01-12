@@ -69,7 +69,7 @@ def select_zaposleni(conn, id_zaposlenog):
 conn = create_connection("obracun_plata.db")
 if conn is not None:
     while True:
-        izbor = int(input("Unesite 0 za kraj programa, 1 za unos novog zaposlenog, 2 za update zaposlenog, 3 za brisanje zaposlenog  :"))
+        izbor = int(input("Unesite 0 za kraj programa ZAPOSLENI, 1 za unos novog ZAPOSLENOG, 2 za azuriranje ZAPOSLENOG, 3 za brisanje ZAPOSLENOG  :"))
 
         if izbor == 0:
             break
@@ -120,6 +120,8 @@ if conn is not None:
                 print("Podaci o zaposlenom su ažurirani.")
             else:
                 print("Zaposleni sa unijeti ID-em ne postoji.")
+
+        # Brisanje zaposlenog iz tabele
         elif izbor == 3:
             id_zaposlenog = int(input("Unesite ID zaposlenog kojeg zelite da obrisete:"))
             zaposleni = select_zaposleni(conn, id_zaposlenog)
