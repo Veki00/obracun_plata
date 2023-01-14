@@ -1,7 +1,6 @@
 import sqlite3
 from sqlite3 import Error
 
-from main import create_connection
 
 class Plata():
     def __init__(self, id_plata, id_zaposlenog, neto_plata, bruto_plata, mjesec):
@@ -10,6 +9,16 @@ class Plata():
         self.neto_plata = neto_plata
         self.bruto_plata = bruto_plata
         self.mjesec = mjesec
+
+def create_connection(db_file):
+    conn = None
+    try:
+        conn = sqlite3.connect(db_file)
+        return conn
+    except Error as e:
+        print(e)
+
+    return conn
 
 def create_plata(conn, plata):
     try:
@@ -68,7 +77,7 @@ def delete_zaposleni_plata(con, id_zaposlenog):
 conn = create_connection("obracun_plata.db")
 if conn is not None:
     while True:
-        izbor = int(input("Unesite 0 za kraj programa PLATA, 1 za novi unos PLATE, 2 za azuriranje PLATE: "))
+        izbor = int(input("Unesite 0 za kraj programa PLATA, 1 za novi unos PLATE, 2 za azuriranje PLATE, 3 za brisanje podataka o PLATI: "))
         if izbor == 0:
             break
         elif izbor == 1:

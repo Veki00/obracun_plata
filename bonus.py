@@ -1,7 +1,6 @@
 import sqlite3
 from sqlite3 import Error
 
-from main import create_connection
 
 class Bonus():
     def __init__(self, id_bonusa, opis, iznos, id_zaposlenog):
@@ -10,6 +9,15 @@ class Bonus():
         self.iznos = iznos
         self.id_zaposlenog = id_zaposlenog
 
+def create_connection(db_file):
+    conn = None
+    try:
+        conn = sqlite3.connect(db_file)
+        return conn
+    except Error as e:
+        print(e)
+
+    return conn
 def create_bonus(conn, bonus):
     try:
         sql = """INSERT INTO Bonus (ID, Opis, Iznos, IDZaposlenog) VALUES(?,?,?,?)"""

@@ -44,8 +44,10 @@ cursor.execute("""CREATE TABLE Bonus (
 # Kreiranje tabele "Izvjestaj"
 cursor.execute("""CREATE TABLE Izvjestaj (
                 ID INTEGER PRIMARY KEY, 
-                Mjesec TEXT, IznosPlate REAL, 
-                Bonusi REAL, UkupniTroskovi REAL, 
+                Mjesec TEXT, 
+                IznosPlate REAL, 
+                Bonusi REAL, 
+                UkupniTroskovi REAL, 
                 IDZaposlenog INTEGER, 
                 FOREIGN KEY (IDZaposlenog) REFERENCES Zaposleni(ID))""")
 

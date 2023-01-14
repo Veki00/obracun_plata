@@ -84,6 +84,7 @@ if conn is not None:
             z = Zaposleni(id_zaposlenog, ime_zaposlenog, prezime_zaposlenog,
                           radno_mjesto_zaposlenog, satnica_zaposlenog, broj_sati_zaposlenog)
             create_zaposleni(conn, z)
+            print("Zaposleni je uspjesno dodan u bazu")
 
         #Azuriranje podataka zaposlenog
         elif izbor == 2:

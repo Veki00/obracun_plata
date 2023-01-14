@@ -1,7 +1,6 @@
 import sqlite3
 from sqlite3 import Error
 
-from main import create_connection
 
 class Troskovi():
     def __init__(self, id_troskovi, id_zaposlenog, zdrav_osiguranje, penzioni_fond, fond_solidarnosti):
@@ -11,6 +10,15 @@ class Troskovi():
         self.penzioni_fond = penzioni_fond
         self.fond_solidarnosti = fond_solidarnosti
 
+def create_connection(db_file):
+    conn = None
+    try:
+        conn = sqlite3.connect(db_file)
+        return conn
+    except Error as e:
+        print(e)
+
+    return conn
 def create_troskovi(conn, troskovi):
     try:
         sql = """INSERT INTO Troskovi (ID, IDZaposlenog, ZdravstvenoOsiguranje, PenzioniFond, FondSolidarnosti) VALUES(?,?,?,?,?)"""
